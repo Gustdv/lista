@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Agenda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Mistério de Louvor Tancredo Neves</h1>
+      
+      </div>
+    </div>
+    <div id="novoEvento" class="row my-2 mx-1 py-2 border rounded d-none" >
+      <div class="col-12">
+        <form action="" id="formNovaMusica">
+          <div class="row">
+            <div class="col-12">
+              <h2>Nova Lista</h2>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="nomeEvento" class="form-label">Lista de Musica</label>
+              <input type="text" name="nomeEvento" id="nomeMusica" class="form-control" placeholder="Musica">
+              <input type="text" name="nomeEvento" id="nomeCantor" class="form-control" placeholder="cantor">
+
+            </div>
+            <div class="col-12">
+              <label for="dataEvento" class="form-label">Observação</label>
+              <input type="text" name="observacao" id="observacao" class="form-control" placeholder="observação">
+            </div>
+            <div class="col-12" id="alert">
+              <div id="mensagemErro" class="alert aler-danger d-none" role="alert">
+                Mensagem de Error
+              </div>
+            </div>
+            <div class="col-6"><button type="button" class="btn btn-danger w-100" id="btn_Cancelar">Cancelar</button></div>
+            <div class="col-6"><button type="submit" class="btn btn-primary w-100" onclick="populateStorage()">Salvar</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>
+          Lista De Musicas
+        </h2>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-success" id="btn_novaMusica">Nova Musica</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Musica</th>
+              <th scope="col">Cantor</th>
+              <th scope="col">Observação</th>
+              <th scope="col">Acao</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaMusicas">
+            <!--<td colspan="3">Nenhuma Musica</td> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="/javasc/list-music.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.container{
+
+  background-color: rgb(40,40,40);
+
+}
+
+h1{
+    color: white;
+    text-align: center;
+}
+
+h2{
+    color: white;
+}
+
+.col-12 label{
+    color: white;
+}
+.table{
+    color: white;
+}
+#alert{
+    color: white;
+}
