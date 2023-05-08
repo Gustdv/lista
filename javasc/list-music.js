@@ -7,6 +7,31 @@ var inputNomeCantor = document.getElementById('nomeCantor');
 var inputObservacao = document.getElementById('observacao');
 var divMensagemErro = document.getElementById('mensagemErro')
 var tabelaMusicas = document.getElementById('tabelaMusicas')
+       
+const inputBusca = document.getElementById('busca');
+const tabelaMusic = document.getElementById('tabelaMusicas');
+
+//sitemas buscas
+inputBusca.addEventListener('keyup', ()=>{
+    let expressao = inputBusca.value.toLowerCase();
+    
+    let linhas = tabelaMusic.getElementsByTagName('tr')
+
+    
+    for (let posiccao in linhas){
+        if (true == isNaN(posiccao)) {
+            continue;
+        }
+        let conteudoDalinha = linhas[posiccao].innerHTML.toLocaleLowerCase();
+        
+        if  (true == conteudoDalinha.includes(expressao)) {
+            linhas[posiccao].style.display = '';
+        }else {
+            linhas[posiccao].style.display = 'none';
+        }
+
+    }
+})
 
 
 var listaMusicas = [];
@@ -182,3 +207,5 @@ btn_Cancelar.addEventListener('click', ocultarLista);
 
 formNovaMusica.addEventListener('submit', salvarNovaMusica);
 window.addEventListener('load', atualizarTabelaMusicas)
+
+
