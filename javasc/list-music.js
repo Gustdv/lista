@@ -40,41 +40,21 @@ inputBusca.addEventListener('keyup', ()=>{
 
 var listaMusicas = [];
 
-function populateStorage() {
-    var nomeMus = document.getElementById('nomeMusica');
-    var nomeCant = document.getElementById('nomeCantor'); 
-    var link = document.getElementById('link');
-    
-    var dados = JSON.parse(localStorage.getItem('dadosMusicas'));
 
-    if(dados == null){
-        localStorage.setItem('dadosMusicas', '[]');
-        dados = [];
-    }
-     var autoregistro = {
-        nomeMus: nomeMus.value,
-        cantor:  nomeCant.value,
-        link: link.value
-     }
-
-     dados.push(autoregistro);
-     localStorage.setItem('dadosMusicas', JSON.stringify(dados));
-  }
-  
 
 function removerMusica(event) {
     var posicao = event.target.getAttribute('data-musica');
     listaMusicas.splice(posicao, 1)
     atualizarTabelaMusicas();
     window.populateStorage();
-   
+    
 }
 
 function atualizarTabelaMusicas() {
     console.log('Chamando atualizar a tabela de musicas!')
     if (listaMusicas.length == 0 ) {
         tabelaMusicas.innerHTML = '<tr><td colspan="3">Nenhuma Musica</td></tr>'
-        window.populateStorage();
+        
         return;
         
     }
@@ -94,7 +74,7 @@ function atualizarTabelaMusicas() {
         botaoExcluir.addEventListener('click', removerMusica)
         celulaMusica.innerText = musica.nomeMusica;
         celulaCantor.innerText = musica.nomeCantor;
-        celulaLink.innerText = musica.link;
+        celulaLink.innerHTML = musica.link;
         botaoExcluir.innerText = 'Remover'
         celulaAcoes.appendChild(botaoExcluir);
         linha.appendChild(celulaMusica);
@@ -102,6 +82,7 @@ function atualizarTabelaMusicas() {
         linha.appendChild(celulaLink);
         linha.appendChild(celulaAcoes);
         tabelaMusicas.appendChild(linha);
+        
         
        
     }
@@ -135,7 +116,10 @@ function ocultarLista(){
 
 }
 
-function novaMussicaValida(nomeMusica,nomeCantor,observacao) {
+function novaMussicaValida(nomeMusica,nomeCantor,link) {
+   
+   
+
     var validacaoOk = true;
     var error = '';
     if(nomeMusica.trim().length == 0){
@@ -158,7 +142,7 @@ function novaMussicaValida(nomeMusica,nomeCantor,observacao) {
    }else{
         inputNomeCantor.classList.remove('is-invalid');
    }
-   if(observacao.trim().length == 0) {
+   if(link.trim().length == 0) {
     if(error.length >0){
         error+=', '
     }
@@ -168,6 +152,8 @@ function novaMussicaValida(nomeMusica,nomeCantor,observacao) {
    } else{
        inputLink.classList.remove('is-invalid');
    }
+
+   
     // nome da musica esta vazio?
     // nome do cantor esta vazio?
     // nome observacao esta vazio?
@@ -179,8 +165,9 @@ function novaMussicaValida(nomeMusica,nomeCantor,observacao) {
         divMensagemErro.classList.add('d-none')
     }
 
-    
+  
     return validacaoOk;
+    
 }
 
 
@@ -190,7 +177,7 @@ function salvarNovaMusica(event) {
      var nomeCantor = inputNomeCantor.value;
      var link = inputLink.value;
 
-     if(novaMussicaValida(nomeMusica,nomeCantor,observacao)){
+     if(novaMussicaValida(nomeMusica,nomeCantor,link)){
         
          listaMusicas.push({
             nomeMusica: nomeMusica,
@@ -202,6 +189,7 @@ function salvarNovaMusica(event) {
      }else {
         console.log('Nova musica é invalida!');
      }
+     
 }
 
 
@@ -209,7 +197,7 @@ btn_novaMusica.addEventListener('click',mostrarNovaLista);
 
 btn_Cancelar.addEventListener('click', ocultarLista);
 
-formNovaMusica.addEventListener('submit', salvarNovaMusica);
+formNovaMusica.addEventListener('submit', salvarNovaMusica)
 window.addEventListener('load', atualizarTabelaMusicas)
 
 
