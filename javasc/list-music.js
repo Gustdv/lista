@@ -15,6 +15,10 @@ const tabelaMusic = document.getElementById('tabelaMusicas');
 inputBusca.addEventListener('keyup', ()=>{
     let expressao = inputBusca.value.toLowerCase();
     
+    if (expressao.length === 1) {
+       return;
+    }
+
     let linhas = tabelaMusic.getElementsByTagName('tr')
 
     
