@@ -4,7 +4,7 @@ var novoEvento = document.getElementById('novoEvento');
 var formNovaMusica = document.getElementById('formNovaMusica');
 var inputNomeMusica = document.getElementById('nomeMusica');
 var inputNomeCantor = document.getElementById('nomeCantor');
-var inputObservacao = document.getElementById('observacao');
+var inputLink = document.getElementById('link');
 var divMensagemErro = document.getElementById('mensagemErro')
 var tabelaMusicas = document.getElementById('tabelaMusicas')
        
@@ -43,7 +43,7 @@ var listaMusicas = [];
 function populateStorage() {
     var nomeMus = document.getElementById('nomeMusica');
     var nomeCant = document.getElementById('nomeCantor'); 
-    var observe = document.getElementById('observacao');
+    var link = document.getElementById('link');
     
     var dados = JSON.parse(localStorage.getItem('dadosMusicas'));
 
@@ -54,7 +54,7 @@ function populateStorage() {
      var autoregistro = {
         nomeMus: nomeMus.value,
         cantor:  nomeCant.value,
-        observe: observe.value
+        link: link.value
      }
 
      dados.push(autoregistro);
@@ -84,7 +84,7 @@ function atualizarTabelaMusicas() {
         var linha  = document.createElement('tr');
         var celulaMusica = document.createElement('td');
         var celulaCantor = document.createElement('td');
-        var celulaObservacao =  document.createElement('td');
+        var celulaLink =  document.createElement('td');
         var celulaAcoes =  document.createElement('td');
         var botaoExcluir = document.createElement('button');
         botaoExcluir.setAttribute('data-musica', i);
@@ -94,12 +94,12 @@ function atualizarTabelaMusicas() {
         botaoExcluir.addEventListener('click', removerMusica)
         celulaMusica.innerText = musica.nomeMusica;
         celulaCantor.innerText = musica.nomeCantor;
-        celulaObservacao.innerText = musica.observacao;
+        celulaLink.innerText = musica.link;
         botaoExcluir.innerText = 'Remover'
         celulaAcoes.appendChild(botaoExcluir);
         linha.appendChild(celulaMusica);
         linha.appendChild(celulaCantor);
-        linha.appendChild(celulaObservacao);
+        linha.appendChild(celulaLink);
         linha.appendChild(celulaAcoes);
         tabelaMusicas.appendChild(linha);
         
@@ -112,10 +112,10 @@ function atualizarTabelaMusicas() {
 function limparNovaMusica() {
     inputNomeMusica.value = '';
     inputNomeCantor.value = '';
-    inputObservacao.value = '';
+    inputLink.value = '';
     inputNomeMusica.classList.remove('is-invalid');
     inputNomeCantor.classList.remove('is-invalid');
-    inputObservacao.classList.remove('is-invalid');
+    inputLink.classList.remove('is-invalid');
     divMensagemErro.classList.add('d-none');
     divMensagemErro.innerHTML = '';
 }
@@ -163,10 +163,10 @@ function novaMussicaValida(nomeMusica,nomeCantor,observacao) {
         error+=', '
     }
       error += 'Campo obrigatório'
-      inputObservacao.classList.add('is-invalid');
+      inputLink.classList.add('is-invalid');
       validacaoOk = false;
    } else{
-       inputObservacao.classList.remove('is-invalid');
+       inputLink.classList.remove('is-invalid');
    }
     // nome da musica esta vazio?
     // nome do cantor esta vazio?
@@ -188,14 +188,14 @@ function salvarNovaMusica(event) {
      event.preventDefault();
      var nomeMusica =  inputNomeMusica.value;
      var nomeCantor = inputNomeCantor.value;
-     var observacao = inputObservacao.value;
+     var link = inputLink.value;
 
      if(novaMussicaValida(nomeMusica,nomeCantor,observacao)){
         
          listaMusicas.push({
             nomeMusica: nomeMusica,
             nomeCantor: nomeCantor,
-            observacao: observacao 
+            link: link 
          })
          atualizarTabelaMusicas();
          ocultarLista();
