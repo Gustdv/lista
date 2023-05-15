@@ -1,20 +1,40 @@
 .container{
 
   background-color: rgb(40,40,40);
+  border-radius: 5px;
+  padding: 70px;
+  
 
+}
+
+body{
+  background-color: #ccc;
+}
+footer{
+  font-size: 12px;
+  text-align: center;
 }
 
 h1{
     color: white;
     text-align: center;
+    border-bottom: inset;
 }
 
 h2{
     color: white;
+    
 }
 
 .col-12 label{
     color: white;
+    
+}
+
+.col-12 >input[name=nomeAutor]{
+  
+  border-radius: 8px;
+  width: 100%;
 }
 .table{
     color: white;
