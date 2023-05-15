@@ -1,8 +1,13 @@
-.container-xxl{
+.container{
 
   background-color: rgb(40,40,40);
   border-radius: 5px;
-  padding: 70px;
+  width: 100%;
+  justify-content: space-around;
+  overflow: auto;
+  
+  
+  
   
 
 }
@@ -29,6 +34,7 @@ h2{
 .col-12 label{
     color: white;
     
+    
 }
 
 .col-12 >input[name=nomeAutor]{
@@ -38,6 +44,8 @@ h2{
 }
 .table{
     color: white;
+    
+    
 }
 #alert{
     color: white;
@@ -73,3 +81,6 @@ h2{
     padding-left: 24px;
     background-color: rgb(40,40,40);
     color: white;}
+
+
+    

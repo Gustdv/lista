@@ -93,6 +93,7 @@ function atualizarTabelaMusicas() {
         linha.appendChild(celulaLink);
         linha.appendChild(celulaAutor);
         linha.appendChild(celulaAcoes);
+      
         tabelaMusicas.appendChild(linha);
         
         
